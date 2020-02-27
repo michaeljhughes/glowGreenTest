@@ -65,3 +65,109 @@ if (strpos($haystack, "Hello")) {
 
 #### Demonstrate how you would securely store and compare usernames and passwords within a MySQL Database.
 
+### HTML
+
+#### Which of the following is more semantically correct (For the title of a document)?
+
+**A**
+```html
+<span class="title">This is a Title</span>
+```
+
+**B**
+```html
+<h1>This is a Title</h1>
+```
+
+
+**C**
+```html
+<p><b>This is a Title</b></p>
+```
+
+#### Which of the following is more semantically correct?
+
+**A**
+```html
+<h2>A List of Stuff</h2>
+<ul>
+    <li>Robots</li>
+    <li>Monkeys</li>
+    <li>Vikings</li>
+    <li>KitKats</li>
+</ul>
+```
+
+**B**
+```html
+<dl>
+    <dt>A List of Stuff</dt>
+    <dd>Robots</dd>
+    <dd>Monkeys</dd>
+    <dd>Vikings</dd>
+    <dd>KitKats</dd>
+</dl>
+```
+
+#### When marking up multiple paragraphs within one list item, which method makes the most sense?
+
+**A**
+```html
+<ul>
+  <li>Paragraph 1<br /><br />
+  Paragraph 2</li>
+</ul>
+```
+
+**B**
+```html
+<ul>
+  <li>Paragraph 1
+  <p>Paragraph 2</p></li>
+</ul>
+```
+
+**C**
+```html
+<ul>
+  <li>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+  </li>
+</ul>
+```
+
+### CSS
+
+#### Look at the following snippet CSS
+
+```css
+body a {
+    color: purple;
+}
+
+#link {
+    color: black;
+}
+
+.red a {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+```
+
+#### Consider the html below and answer the following questions
+
+```html
+<p class="red">
+    <a id="link" class="blue" href="#">link</a>
+</p>
+```
+
+1. What colour will the link text be for the above html ?
+2. What colour will the link text be if the id is removed from the link ?
+3. Did you cheat?
+
