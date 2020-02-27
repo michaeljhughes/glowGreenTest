@@ -1,78 +1,221 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Glow Green PHP Developer Test
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+Thank you for your interest in working at Glow Green. 
+
+We have put together a number of questions based in order to give us a basic understanding of your skills.
+
+The test covers creating endpoints within a Laravel project, as well as some basic CSS, HTML, PHP and Server configuration questions.
+
+Please fork this repository, answer the questions / make your changes and send a pull request back when you're done.
+
+## Laravel Tasks
+
+Complete the TODOs in the DeveloperTestController. Look closely at the commit messages for clues about which files are relevant!
+
+Your API endpoints exist at `<domain>/api/developer-tests`
+
+## Other Tasks
+
+Next, answer these questions in-line by changing this file.
+
+### PHP
+
+#### Find as many problems as you can with this code.
+
+```php
+class Example_Db_Class
+{
+    static function connect($dbName)
+    {
+        if ($this->db == null) {
+            $this->db = new $this->mysql_connect($dbname);
+        }
+    }
+}
+```
+
+#### What is wrong with this SQL query?
+
+```sql
+SELECT * FROM table WHERE id = $_POST[ 'id' ]
+```
+#### Third party code
+
+A requirement has come up to use a third party API, write some pros and cons for each of the following:
+
+1. Writing your own bespoke wrapper for their API using PHP.
+2. Using the APIs official PHP library downloaded from their site in a ZIP file.
+3. Using a third-party library using Composer/Packagist.
+
+Which option would you have chosen, and why?
+
+#### What is wrong with the following statement?
+
+```php
+$haystack = "Hello world";
+
+if (strpos($haystack, "Hello")) {
+    echo "Found!";
+}
+```
+
+#### What is the difference between public, protected and private in a class definition?
+
+#### What is the difference between an interface and an abstract class?
+
+#### Demonstrate how you would securely store and compare usernames and passwords within a MySQL Database.
+
+### HTML
+
+#### Which of the following is more semantically correct (For the title of a document)?
+
+**A**
+```html
+<span class="title">This is a Title</span>
+```
+
+**B**
+```html
+<h1>This is a Title</h1>
+```
+
+
+**C**
+```html
+<p><b>This is a Title</b></p>
+```
+
+#### Which of the following is more semantically correct?
+
+**A**
+```html
+<h2>A List of Stuff</h2>
+<ul>
+    <li>Robots</li>
+    <li>Monkeys</li>
+    <li>Vikings</li>
+    <li>KitKats</li>
+</ul>
+```
+
+**B**
+```html
+<dl>
+    <dt>A List of Stuff</dt>
+    <dd>Robots</dd>
+    <dd>Monkeys</dd>
+    <dd>Vikings</dd>
+    <dd>KitKats</dd>
+</dl>
+```
+
+#### When marking up multiple paragraphs within one list item, which method makes the most sense?
+
+**A**
+```html
+<ul>
+  <li>Paragraph 1<br /><br />
+  Paragraph 2</li>
+</ul>
+```
+
+**B**
+```html
+<ul>
+  <li>Paragraph 1
+  <p>Paragraph 2</p></li>
+</ul>
+```
+
+**C**
+```html
+<ul>
+  <li>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+  </li>
+</ul>
+```
+
+### CSS
+
+#### Look at the following snippet CSS
+
+```css
+body a {
+    color: purple;
+}
+
+#link {
+    color: black;
+}
+
+.red a {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+```
+
+#### Consider the html below and answer the following questions
+
+```html
+<p class="red">
+    <a id="link" class="blue" href="#">link</a>
 </p>
+```
 
-## About Laravel
+1. What colour will the link text be for the above html ?
+2. What colour will the link text be if the id is removed from the link ?
+3. Did you cheat?
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Server Configuration
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Please add comments to this Apache virtual host to explain what each section is doing
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```
+<VirtualHost *:80>
 
-## Learning Laravel
+    ServerName  dev.site.com
+    ServerAdmin web@glowgreenltd.com
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    SetEnv SITE_CONFIG dev
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    DocumentRoot    /path/to/public/folder
 
-## Laravel Sponsors
+    Options Indexes
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    RewriteEngine on
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+    RewriteRule ^/core/(.*) /core/$1 [L,PT]
 
-## Contributing
+    RewriteRule ^/favicon.ico$ /images/favicon.ico
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    RewriteRule ^.+/images/(.*(png|gif|jpg)$) /images/$1
 
-## Code of Conduct
+    RewriteRule ^/google(.+).html$ /google$1.html [L]
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    RewriteCond  $1 !^/assets/.*
+    RewriteCond  $1 !^/javascript/.*
+    RewriteCond  $1 !^/images/.*
+    RewriteCond  $1 !^/css/.*
+    RewriteRule ^(.*) /index.php [L]
 
-## Security Vulnerabilities
+    Alias /core     /path/to/another/public/folder
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    RewriteRule ^/images/(.*) http://0.0.0.0:8080/images/$1 [P]
+    RewriteRule ^/assets/(.*) http://0.0.0.0:8080/assets/$1 [P]
+    RewriteRule ^/css/(.*) http://0.0.0.0:8080/css/$1 [P]
 
-## License
+    RewriteCond   %{REQUEST_URI} !.*\.php$
+    RewriteRule ^/javascript/(.*) http://0.0.0.0:8080/javascript/$1 [P]
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+</VirtualHost>
+```
+
+#### Name as many different types of Web Application and Server based security holes. (Eg, SQL Injection)
+
+1. SQL Injection
+2. ...
