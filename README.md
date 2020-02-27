@@ -171,3 +171,51 @@ body a {
 2. What colour will the link text be if the id is removed from the link ?
 3. Did you cheat?
 
+### Server Configuration
+
+Please add comments to this Apache virtual host to explain what each section is doing
+
+```
+<VirtualHost *:80>
+
+    ServerName  dev.site.com
+    ServerAdmin web@glowgreenltd.com
+
+    SetEnv SITE_CONFIG dev
+
+    DocumentRoot    /path/to/public/folder
+
+    Options Indexes
+
+    RewriteEngine on
+
+    RewriteRule ^/core/(.*) /core/$1 [L,PT]
+
+    RewriteRule ^/favicon.ico$ /images/favicon.ico
+
+    RewriteRule ^.+/images/(.*(png|gif|jpg)$) /images/$1
+
+    RewriteRule ^/google(.+).html$ /google$1.html [L]
+
+    RewriteCond  $1 !^/assets/.*
+    RewriteCond  $1 !^/javascript/.*
+    RewriteCond  $1 !^/images/.*
+    RewriteCond  $1 !^/css/.*
+    RewriteRule ^(.*) /index.php [L]
+
+    Alias /core     /path/to/another/public/folder
+
+    RewriteRule ^/images/(.*) http://0.0.0.0:8080/images/$1 [P]
+    RewriteRule ^/assets/(.*) http://0.0.0.0:8080/assets/$1 [P]
+    RewriteRule ^/css/(.*) http://0.0.0.0:8080/css/$1 [P]
+
+    RewriteCond   %{REQUEST_URI} !.*\.php$
+    RewriteRule ^/javascript/(.*) http://0.0.0.0:8080/javascript/$1 [P]
+
+</VirtualHost>
+```
+
+#### Name as many different types of Web Application and Server based security holes. (Eg, SQL Injection)
+
+1. SQL Injection
+2. ...
