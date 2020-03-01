@@ -4,14 +4,14 @@
 
 Here is a basic startup for the Laravel Tasks, in case you were interested
 
-Turned on XAMPP
-Cloned git repo
-Run 'compose install'
-Change storage file permissions
-Run 'php artisan key:generate'
-Create .env file with database details (localhost, root, no password)
-Setup Virtual Host config for Apache
-Run 'php artisan migrate'
+1. Turned on XAMPP
+2. Cloned git repo
+3. Run 'compose install'
+4. Change storage file permissions
+5. Run 'php artisan key:generate'
+6. Create .env file with database details (localhost, root, no password)
+7. Setup Virtual Host config for Apache
+8. Run 'php artisan migrate'
 
 This left me in a position to use Postman to complete the tasks specified in the Developer Task Controller. This took about an hour.
 
