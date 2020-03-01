@@ -13,7 +13,7 @@ Create .env file with database details (localhost, root, no password)
 Setup Virtual Host config for Apache
 Run 'php artisan migrate'
 
-This left me in a position to use Postman to complete the tasks specified in the Developer Task Controller
+This left me in a position to use Postman to complete the tasks specified in the Developer Task Controller. This took about an hour.
 
 ## Other Tasks
 
@@ -257,7 +257,7 @@ Please add comments to this Apache virtual host to explain what each section is 
     # Replace instances of /core with /path/to/another/public/folder
     Alias /core     /path/to/another/public/folder
 
-    # 
+    # Rewrite url to send to localhost port 8080 for an external service to handle
     RewriteRule ^/images/(.*) http://0.0.0.0:8080/images/$1 [P]
     RewriteRule ^/assets/(.*) http://0.0.0.0:8080/assets/$1 [P]
     RewriteRule ^/css/(.*) http://0.0.0.0:8080/css/$1 [P]
@@ -271,4 +271,9 @@ Please add comments to this Apache virtual host to explain what each section is 
 #### Name as many different types of Web Application and Server based security holes. (Eg, SQL Injection)
 
 1. SQL Injection
-2. ...
+2. Cross Site Scripting 
+3. Insecure Direct Object References 
+4. Security misconfiguration
+5. Unencrypted sensitive data
+6. Cross Site Request Forgery (CSRF)
+7. Outdated or Untrusted dependencies
