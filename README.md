@@ -1,18 +1,19 @@
 # Glow Green PHP Developer Test
 
-Thank you for your interest in working at Glow Green. 
-
-We have put together a number of questions based in order to give us a basic understanding of your skills.
-
-The test covers creating endpoints within a Laravel project, as well as some basic CSS, HTML, PHP and Server configuration questions.
-
-Please fork this repository, answer the questions / make your changes and send a pull request back when you're done.
-
 ## Laravel Tasks
 
-Complete the TODOs in the DeveloperTestController. Look closely at the commit messages for clues about which files are relevant!
+Here is a basic startup for the Laravel Tasks, in case you were interested
 
-Your API endpoints exist at `<domain>/api/developer-tests`
+Turned on XAMPP
+Cloned git repo
+Run 'compose install'
+Change storage file permissions
+Run 'php artisan key:generate'
+Create .env file with database details (localhost, root, no password)
+Setup Virtual Host config for Apache
+Run 'php artisan migrate'
+
+This left me in a position to use Postman to complete the tasks specified in the Developer Task Controller
 
 ## Other Tasks
 
@@ -33,12 +34,17 @@ class Example_Db_Class
     }
 }
 ```
+Class name should not contain underscores.
+Static functions can only access static variables and static functions. So $this will not work.
+Should use idential comparison operator (===) to ensure type and value are equal.
 
 #### What is wrong with this SQL query?
 
 ```sql
 SELECT * FROM table WHERE id = $_POST[ 'id' ]
 ```
+
+You should never put user input directly into an SQL query as this can allow for SQL injection.
 #### Third party code
 
 A requirement has come up to use a third party API, write some pros and cons for each of the following:
@@ -49,6 +55,12 @@ A requirement has come up to use a third party API, write some pros and cons for
 
 Which option would you have chosen, and why?
 
+1. Writing your own bespoke wrapper gives you complete control over what happens, but will require more time to implement.
+2. Using the APIs official library should ensure it is secure, up to date and should be well documented. It may not have as much functionality as a 3rd party library.
+3. Third-party libraries may stop being updated at some point and not support your PHP version securely, for example. They will likely have extra functionality over the official library as it may be open source.
+
+I would pick option 2 for a commercial product, as it's important that the library will be updated over time so that it uses the latest PHP version and is secure.
+
 #### What is wrong with the following statement?
 
 ```php
@@ -58,12 +70,36 @@ if (strpos($haystack, "Hello")) {
     echo "Found!";
 }
 ```
+strpos() will give the starting position in the string for the supplied match.
+In this example "Hello" is at the start of the string and so the value is 0.
+The evaluated value of 0 will not trigger the if statement.
+You could change it to:
+
+
+```php
+$haystack = "Hello world";
+
+if (strpos($haystack, "Hello") !== false) {
+    echo "Found!";
+}
+```
+This uses the not identical comparison operator to check type as well as value.
 
 #### What is the difference between public, protected and private in a class definition?
+Public - Makes the variable/function available anywhere.
+Protected - Makes the variable/function available within its own class and any classes that extend this class.
+Private - Makes the variable/function available within its own class only.
 
 #### What is the difference between an interface and an abstract class?
+An interface will define requirements for the developer, such as certain classes that must be included. These classes will be abstract.
+
+An abstract class will do the same as an interface, but also implement some base classes that can be uses as well.
+
+Child classes can only extend a single abstract class, but you can implement multiple inferfaces.
 
 #### Demonstrate how you would securely store and compare usernames and passwords within a MySQL Database.
+The password should be hashed so that it's not visible as plain text in the database.
+Password_verify() can be used to by passing in the password supplied and the saved hashed password from the database, after matching on username, and see if they return the same hashed password.
 
 ### HTML
 
@@ -84,6 +120,8 @@ if (strpos($haystack, "Hello")) {
 ```html
 <p><b>This is a Title</b></p>
 ```
+
+A is correct as it applies an appropriate class name that will take advantage of global style sheets
 
 #### Which of the following is more semantically correct?
 
@@ -108,6 +146,8 @@ if (strpos($haystack, "Hello")) {
     <dd>KitKats</dd>
 </dl>
 ```
+
+A as it differentiates between the list items and the heading, allowing for easy styling
 
 #### When marking up multiple paragraphs within one list item, which method makes the most sense?
 
@@ -136,6 +176,8 @@ if (strpos($haystack, "Hello")) {
   </li>
 </ul>
 ```
+
+C as it correctly tags each paragraph with a <p> tag within the one list item
 
 ### CSS
 
@@ -167,44 +209,55 @@ body a {
 </p>
 ```
 
-1. What colour will the link text be for the above html ?
-2. What colour will the link text be if the id is removed from the link ?
-3. Did you cheat?
+1. What colour will the link text be for the above html ? Black
+2. What colour will the link text be if the id is removed from the link ? Red
+3. Did you cheat? No
 
 ### Server Configuration
 
 Please add comments to this Apache virtual host to explain what each section is doing
 
 ```
+# Listens on port 80 (http)
 <VirtualHost *:80>
-
+    # URL in browser that will activate this config
     ServerName  dev.site.com
+    # Contact address for the server, included in error messages
     ServerAdmin web@glowgreenltd.com
 
+    # Set environment variable SITE_CONFIG to dev, used to differenciate between working and live environments
     SetEnv SITE_CONFIG dev
 
+    # Root directory for the URL to access when accessing the ServerName
     DocumentRoot    /path/to/public/folder
 
+    # Show list of files in directory if no Index is found inside folder
     Options Indexes
 
+    # Turn on the Rewrite Engine that will reformat the URL based on rules supplied
     RewriteEngine on
 
     RewriteRule ^/core/(.*) /core/$1 [L,PT]
 
     RewriteRule ^/favicon.ico$ /images/favicon.ico
 
+    # Rewrite URL when images match certain file types
     RewriteRule ^.+/images/(.*(png|gif|jpg)$) /images/$1
 
+    # Rewrite url to replace /google.x.html to /googlex.html
     RewriteRule ^/google(.+).html$ /google$1.html [L]
 
+    # Rewrite the multiple Rewrite Conditions to the rule supplied
     RewriteCond  $1 !^/assets/.*
     RewriteCond  $1 !^/javascript/.*
     RewriteCond  $1 !^/images/.*
     RewriteCond  $1 !^/css/.*
     RewriteRule ^(.*) /index.php [L]
 
+    # Replace instances of /core with /path/to/another/public/folder
     Alias /core     /path/to/another/public/folder
 
+    # 
     RewriteRule ^/images/(.*) http://0.0.0.0:8080/images/$1 [P]
     RewriteRule ^/assets/(.*) http://0.0.0.0:8080/assets/$1 [P]
     RewriteRule ^/css/(.*) http://0.0.0.0:8080/css/$1 [P]
